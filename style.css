@@ -1,0 +1,907 @@
+/* RESET GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050a0e;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- HEADER (Alineación perfecta) --- */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center; /* Centra todo verticalmente */
+    justify-content: space-between;
+    padding: 0 5%;
+    z-index: 1000;
+}
+
+.left {
+    display: flex;
+    align-items: center; /* Alinea logo y texto "CAOS STUDIO" */
+}
+
+.logo-img { height: 45px; }
+.logo-text { font-weight: 900; font-size: 20px; margin-left: 10px; }
+
+.center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center; /* Centra los links del menú */
+    gap: 25px;
+}
+
+.center a {
+    color: #bbb;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.center a:hover { color: #a2ff00; }
+
+.right {
+    display: flex;
+    align-items: center; /* Alinea botón e iconos */
+    gap: 15px;
+}
+
+.btn-download {
+    background-color: #129661;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+}
+
+.icon img { width: 22px; filter: invert(1); }
+
+/* HERO SECTION */
+.hero-header {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.3), #050a0e), url('../encabezado.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    text-align: center;      /* Centra el texto por si las dudas */
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;  /* Pone la descripción debajo del título */
+    align-items: center;     /* Centra los elementos hijos (h1 y p) */
+}
+
+.hero-container h1 {
+    font-size: 90px;
+    font-weight: 900;
+    margin-bottom: 10px;    /* Espacio entre el título y la descripción */
+    letter-spacing: -2px;
+}
+
+.hero-container p {
+    font-size: 20px;
+    color: #cfcfcf;
+    font-weight: 500;
+}
+
+/* --- PROYECTOS --- */
+.proyectos-section {
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+}
+
+.section-title { 
+    width: 780px; 
+    font-size: 40px; 
+    margin-bottom: 30px; 
+}
+.section-title span { color: #a2ff00; }
+
+.carousel-container {
+    width: 780px;
+    height: 439px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide { min-width: 100%; position: relative; }
+.project-img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Información sobre la imagen */
+/* Contenedor para alinear icono y texto */
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre el icono y la palabra */
+    margin-top: 5px;
+}
+
+/* Estilo de los pequeños iconos SVG */
+.info-icon {
+    width: 16px;   /* Tamaño pequeño y elegante */
+    height: 16px;
+    filter: invert(0.8); /* Los hace gris clarito para que no brillen más que el texto */
+    opacity: 0.8;
+}
+
+/* Ajustes del overlay para que queden bien en las esquinas */
+.project-info-overlay {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.info-left h3 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 2px;
+}
+
+.info-left p, .info-right span {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Contenedor principal de los controles */
+.carousel-footer {
+    width: 780px; /* Misma anchura que el carrusel */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding: 0 5px;
+}
+
+/* Grupo Izquierdo: Flechas + 1/10 */
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+/* Estilo de los círculos de las flechas */
+.btn-nav {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde fino y sutil */
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.btn-nav span {
+    font-size: 16px;
+    margin-top: -2px; /* Ajuste óptico para centrar la flecha */
+}
+
+.btn-nav:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo del contador 1 / 10 */
+#img-counter {
+    color: #666; /* Gris oscuro como en la imagen */
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Grupo Derecho: Puntos (Dots) */
+.footer-right {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: white; /* Punto relleno para la imagen actual */
+    border-color: white;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+#img-counter {
+    color: #666;
+    font-size: 14px;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.footer-right {
+    display: flex;
+    gap: 10px;
+    min-height: 20px; /* Asegura que tenga espacio */
+    align-items: center;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border: 1px solid white !important; /* Forzamos el borde para verlos */
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.3s;
+    background: transparent;
+}
+
+.dot.active {
+    background: white !important;
+}
+/* --- FOOTER (Alineación y separación) --- */
+.footer {
+    background-color: #050a0e;
+    padding: 80px 0 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Los títulos de las columnas arriba */
+    padding: 0 60px;
+}
+
+.footer-column.brand {
+    display: flex;
+    align-items: center; /* Logo y texto Caos Studio centrados entre sí */
+    gap: 25px;
+}
+
+.footer-cat-img { width: 80px; height: auto; }
+
+.brand-text h2 { font-size: 24px; font-weight: 900; }
+.brand-text p { color: #888; font-size: 13px; max-width: 250px; }
+
+/* Separación entre Navegación y Comunidad */
+.footer-links-group {
+    display: flex;
+    gap: 80px; /* <--- Esto separa "Navegación" de "Comunidad" */
+}
+
+.footer-column h3 {
+    color: #a2ff00;
+    font-size: 14px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer-column ul { list-style: none; }
+.footer-column ul li { margin-bottom: 12px; }
+.footer-column ul li a { color: #cfcfcf; text-decoration: none; font-size: 14px; transition: 0.3s; }
+.footer-column ul li a:hover { color: white; }
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #444;
+    font-size: 11px;
+}
+
+/* --- PAGINA DE PROYECTOS TIPO OWLEAF --- */
+
+.proyectos-main-content {
+    padding-top: 140px; /* Espacio para que el Nav no tape el contenido */
+    background-color: #050505;
+    min-height: 100vh;
+}
+
+.proyectos-header-text {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.proyectos-header-text h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.proyectos-header-text p {
+    color: #888;
+    font-size: 1.1rem;
+}
+
+/* Grid Layout */
+.proyectos-grid-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 100px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Cards */
+.project-card {
+    background: #0f0f0f;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #1a1a1a;
+    transition: 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-image-box {
+    position: relative;
+    height: 200px;
+}
+
+.card-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Badges (Etiquetas) */
+.status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.proximamente {
+    background: #00ff88;
+    color: #000;
+}
+
+.status-badge.finalizado {
+    background: #555;
+    color: #fff;
+}
+
+/* Contenido de la Card */
+.card-body-content {
+    padding: 25px;
+}
+
+.card-body-content h3 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.card-body-content p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Footer de la Card */
+.card-footer-meta {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+    border-top: 1px solid #222;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.meta-item img {
+    width: 16px;
+    filter: invert(0.4);
+}
+
+/* --- OVERLAY DETALLADO (ESTILO EUFONIA / SQUID GAMES) --- */
+
+.project-card {
+    position: relative;
+    overflow: hidden; /* Importante para ocultar el overlay */
+}
+
+.project-details-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111111;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover .project-details-overlay {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Banner superior */
+.overlay-banner {
+    position: relative;
+    height: 110px;
+    width: 100%;
+}
+
+.banner-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+}
+
+.banner-logo-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.banner-logo-centered img {
+    width: 70px;
+}
+
+/* Contenido del overlay */
+.overlay-info {
+    padding: 15px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.overlay-description {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* Cuadrícula de estadísticas en 2 columnas */
+.stats-grid-detailed {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 12px;
+    padding-top: 15px;
+    border-top: 1px solid #222;
+}
+
+.stat-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.stat-box img {
+    width: 16px;
+    filter: invert(0.6);
+}
+
+.stat-box strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* --- SECCIÓN PROFILES (ESTILO OWLEAF) --- */
+
+.profiles-main-content {
+    padding-top: 160px; /* Espacio para que el header fijo no tape el título */
+    background-color: #050505;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.profiles-header-text h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.profiles-header-text p {
+    color: #888;
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+}
+
+/* Contenedor del Grid */
+.profiles-grid-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
+}
+
+.profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* Tarjeta Individual */
+.profile-card {
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 20px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-8px);
+    border-color: #333;
+    background: #111;
+}
+
+/* Círculo del Avatar */
+.avatar-container {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 25px;
+    background: #1a1a1a; /* Color de fondo mientras carga la imagen */
+    border: 4px solid #1a1a1a;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Texto de Información */
+.profile-info h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.role {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* Colores de Rangos extraídos de la imagen */
+.role.founder { color: #c57710; }      /* Fundador */
+.role.owner { color: #726b1a; }        /* Owner */
+.role.co-owner { color: #9253d5; }     /* Co-Owner */
+.role.admin-lider { color: #ffff00; }  /* Admin Sup/Lider */
+.role.admin { color: #8e621d; }        /* Admin */
+.role.moderator { color: #94b9cd; }    /* Moderador */
+.role.staff { color: #1e00ff; }        /* Staff */
+.role.helper { color: #046307; }       /* Helper */
+
+/* Enlace (Icono de Cadena) */
+.profile-link {
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.profile-link:hover {
+    opacity: 1;
+}
+
+.profile-link img {
+    width: 24px;
+    filter: invert(1); /* Pone el icono en blanco si es oscuro */
+}
+
+/* --- ESTILOS PARA LA PÁGINA DE PRODUCTOS --- */
+
+.main-products {
+    padding: 140px 20px 80px; /* Espacio para el header fijo */
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 80vh;
+}
+
+.section-intro {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-intro h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-intro p {
+    color: #888;
+    font-size: 1.1rem;
+}
+
+/* Grid de Productos */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+/* Tarjeta de Producto (Basada en tu diseño de Profile Card) */
+.product-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 100%;
+    max-width: 350px;
+}
+
+.product-card:hover {
+    transform: translateY(-12px);
+    border-color: #c57710; /* Color Founder para destacar */
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor de Imagen */
+.product-img-container {
+    width: 100%;
+    height: 220px;
+    background: #111;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.1);
+}
+
+/* Información del Producto */
+.product-info {
+    padding: 25px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    height: 45px; /* Mantiene alineados los botones */
+}
+
+.price {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #c57710; /* Color Founder */
+    margin-bottom: 20px;
+}
+
+/* Botón de Acción */
+.btn-buy {
+    display: inline-block;
+    width: 100%;
+    padding: 14px 0;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 12px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-buy:hover {
+    background: #c57710;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(197, 119, 16, 0.4);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .section-intro h1 {
+        font-size: 2.2rem;
+    }
+    
+    .products-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- SECCIÓN CONTACTO --- */
+
+.contact-main {
+    padding-top: 140px;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    background-color: #050505;
+}
+
+.contact-container {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    padding: 0 20px;
+    align-items: start;
+}
+
+.contact-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.contact-content h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.contact-content p {
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.contact-email span {
+    color: #c57710; /* Color de tu rol Founder */
+    font-weight: bold;
+}
+
+/* Estilos del Formulario */
+.contact-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    background: #151515;
+    border: 1px solid #252525;
+    padding: 15px;
+    border-radius: 10px;
+    color: #fff;
+    font-family: inherit;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: #c57710;
+}
+
+.captcha-placeholder {
+    background: #111;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.btn-submit {
+    background: #c57710; /* Color Founder */
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 800;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.2s, background 0.3s;
+    width: 150px;
+}
+
+.btn-submit:hover {
+    background: #e68a13;
+    transform: scale(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

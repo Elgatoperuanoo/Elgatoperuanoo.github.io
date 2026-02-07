@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caos Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icono.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="left">
+            <img src="logo.png" alt="Caos Studio" class="logo-img">
+            <span class="logo-text">CAOS STUDIO</span>
+        </div>
+
+        <nav class="center">
+            <a href="index.html">Inicio</a>
+            <a href="proyecto.html">Proyectos</a>
+            <a href="trabajadores.html">Profiles</a>
+            <a href="productos.html">Productos</a>
+            <a href="contactanos.html">Contáctanos</a>
+        </nav>
+
+        <div class="right">
+            <a href="#" class="btn-download">Descargar Launcher</a>
+            <a href="https://ko-fi.com/caostudio" class="icon"><img src="kofi.svg" alt="Ko-fi"></a>
+            <a href="https://discord.gg/aweVBA6x" class="icon"><img src="discord.svg" alt="Discord"></a>
+            <a href="#" class="icon"><img src="tiktok.svg" alt="TikTok"></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-header">
+            <div class="hero-container">
+                <h1>CAOS STUDIO</h1>
+                <p>Creando eventos para la comunidad</p>
+            </div>
+        </section>
+
+       <section class="proyectos-section">
+    <h2 class="section-title">Nuestros <span>proyectos.</span></h2>
+    
+    <div class="carousel-container">
+        <div class="carousel-track" id="main-track">
+            
+            <div class="carousel-slide">
+                <img src="encabezado.jpg" class="project-img">
+                <div class="project-info-overlay">
+                    <div class="info-left">
+                        <h3>PICHULA</h3>
+                        <div class="info-item">
+                            <img src="person.svg" class="info-icon">
+                            <p>100 Jugadores</p>
+                        </div>
+                    </div>
+                    <div class="info-right">
+                        <div class="info-item">
+                            <img src="calendar.svg" class="info-icon">
+                            <span>10/02/2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <img src="images.jpeg" class="project-img">
+                <div class="project-info-overlay">
+                    <div class="info-left">
+                        <h3>JOSE MARIA</h3>
+                        <div class="info-item">
+                            <img src="person.svg" class="info-icon">
+                            <p>100 Jugadores</p>
+                        </div>
+                    </div>
+                    <div class="info-right">
+                        <div class="info-item">
+                            <img src="calendar.svg" class="info-icon">
+                            <span>10/02/2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="carousel-footer">
+        <div class="footer-left">
+            <div class="nav-buttons">
+                <button class="btn-nav" id="prevBtn"><span>❮</span></button>
+                <button class="btn-nav" id="nextBtn"><span>❯</span></button>
+            </div>
+        </div>
+        <div class="footer-right" id="dots-wrapper">
+            </div>
+    </div>
+</section>
+    </main>
+
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column brand">
+            <img src="logo.png" alt="Logo Caos" class="footer-cat-img">
+            <div class="brand-text">
+                <h2>Caos Studio</h2>
+                <p>Creando experiencias únicas e inolvidables de Minecraft</p>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>Navegación</h3>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="proyecto.html">Proyectos</a></li>
+                <li><a href="trabajadores.html">Profiles</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="contactanos.html">contactanos</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Comunidad</h3>
+            <ul>
+                <li><a href="https://discord.gg/aweVBA6x">Discord</a></li>
+                <li><a href="#">X / Twitter</a></li>
+                <li><a href="#">TikTok</a></li>
+                <li><a href="https://ko-fi.com/caostudio">kofi</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 CAOS STUDIO. Todos los derechos reservados.</p>
+    </div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('main-track');
+    const slides = Array.from(track.children);
+    const nextButton = document.getElementById('nextBtn');
+    const prevButton = document.getElementById('prevBtn');
+    const dotsNav = document.getElementById('dots-wrapper');
+    const counter = document.getElementById('img-counter');
+    
+    let currentIdx = 0;
+
+    // 1. Crear los puntos dinámicamente
+    slides.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dotsNav.appendChild(dot);
+        
+        // Hacer que los puntos sean clicables
+        dot.addEventListener('click', () => {
+            currentIdx = index;
+            updateUI();
+        });
+    });
+
+    const dots = Array.from(dotsNav.children);
+
+    // 2. Función para actualizar la posición y el texto
+    function updateUI() {
+        // Mover el carrusel
+        track.style.transform = `translateX(-${currentIdx * 100}%)`;
+        
+        // Actualizar contador
+        counter.innerText = `${currentIdx + 1} / ${slides.length}`;
+        
+        // Actualizar puntos
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIdx);
+        });
+    }
+
+    // 3. Eventos de los botones
+    nextButton.addEventListener('click', () => {
+        currentIdx = (currentIdx + 1) % slides.length;
+        updateUI();
+    });
+
+    prevButton.addEventListener('click', () => {
+        currentIdx = (currentIdx - 1 + slides.length) % slides.length;
+        updateUI();
+    });
+
+    console.log("Carrusel de Caos Studio cargado correctamente.");
+});
+</script>
+</body>
+</html>
