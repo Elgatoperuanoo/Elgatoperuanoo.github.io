@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rummy | Portfolio</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="rummy-style.css">
+    <link rel="icon" type="image/jpg" href="rummy.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+</head>
+<body id="inicio">
+    <div class="glow-bg"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="rummy.jpg" alt="Rummy" class="nav-avatar">
+                <span class="brand-name">Rummy <span class="brand-dot">Portfolio</span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="rummy.html">Inicio</a></li>
+                <li><a href="#proyectos">Galería</a></li>
+                <li><a href="#servers">He Trabajado Con</a></li>
+                <li><a href="rummy-creaciones.html">Creaciones</a></li>
+                <li><a href="#contacto">contacto</a></li>
+
+                <li class="nav-separator"></li> 
+                
+                <li class="nav-contact">
+                    <a href="https://discord.com/" target="_blank" class="contact-link">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="Discord Icon" class="discord-icon-nav">
+                        <span>Contáctame</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <header class="profile">
+            <div class="avatar-container">
+                <img src="rummy.jpg" alt="Rummy Profile" class="avatar">
+            </div>
+            <h1>Rummy</h1>
+            <p class="tagline">Programador Fullstack</p>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </header>
+
+        <section id="proyectos" class="section">
+            <h2 class="section-title">Software & Sistemas</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="openLightbox(0)">
+                    <img src="trabajo2.jpeg" alt="KeyControl" data-desc="Sistema de control de llaves avanzado programado en Java y Spigot.">
+                    <div class="project-overlay">
+                        <h3>KeyControl System</h3>
+                        <span class="tech-stack">Java • Spigot</span>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openLightbox(1)">
+                    <img src="trabajo1.png" alt="API Rest" data-desc="API de alta seguridad desarrollada con Node.js y bases de datos MongoDB.">
+                    <div class="project-overlay">
+                        <h3>Secure API</h3>
+                        <span class="tech-stack">Node.js • MongoDB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servers" class="section">
+            <h2 class="section-title">He trabajado con</h2>
+            <div class="servers-container">
+                <a href="https://discord.gg/caosstudio" target="_blank" class="server-card">
+                    <div class="server-content">
+                        <img src="logo.png" alt="Caos Studio" class="server-logo">
+                        <div class="server-info">
+                            <h3>Caos Studio</h3>
+                            <span class="view-more">Ver comunidad</span>
+                        </div>
+                    </div>
+                    <div class="server-tooltip">¡Únete al server de Discord!</div>
+                </a>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+    <h2 class="section-title">Terminal de Contacto</h2>
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="t-dot red"></span>
+                <span class="t-dot yellow"></span>
+                <span class="t-dot green"></span>
+            </div>
+            <div class="terminal-title">bash — contact.sh</div>
+        </div>
+        <div class="terminal-body">
+            <p><span class="t-purple">rummy@portfolio:</span><span class="t-blue">~</span>$ ./contact.sh</p>
+            <p class="t-gray"># Iniciando protocolo de comunicación...</p>
+            <br>
+            <p><span class="t-green">✓</span> <span class="t-white">Discord:</span> <span class="t-yellow">rummy_user</span></p>
+            <p><span class="t-green">✓</span> <span class="t-white">Email:</span> <span class="t-yellow">contacto@rummy.dev</span></p>
+            <p><span class="t-green">✓</span> <span class="t-white">Status:</span> <span class="t-blue">Disponible para proyectos</span></p>
+            <br>
+            <div class="contact-actions">
+                <a href="https://discord.com" target="_blank" class="t-btn-discord">
+                    <i class="fab fa-discord"></i> Abrir Discord
+                </a>
+            </div>
+            <p class="t-cursor-line"><span class="t-purple">rummy@portfolio:</span><span class="t-blue">~</span>$ <span class="t-cursor">█</span></p>
+        </div>
+    </div>
+</section>
+        
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Rummy Portfolio</p>
+        <code class="package-name">net.elgatope.keycontrol</code>
+    </footer>
+
+<div id="lightbox" class="lightbox">
+    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <div id="lightbox-counter" class="lightbox-counter">1 / 2</div>
+    
+    <button class="nav-btn prev" onclick="changeImage(-1)">&#10094;</button>
+    <button class="nav-btn next" onclick="changeImage(1)">&#10095;</button>
+    
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="Gigante">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+    // Seleccionamos las imágenes de las project-cards
+    const images = document.querySelectorAll('.project-card img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+
+    function openLightbox(index) {
+        currentIndex = index;
+        updateLightbox();
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto'; 
+    }
+
+    function changeImage(step) {
+        currentIndex += step;
+        if (currentIndex >= images.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = images.length - 1;
+        updateLightbox();
+    }
+
+    function updateLightbox() {
+        const img = images[currentIndex];
+        lightboxImg.src = img.src;
+        lightboxCaption.innerText = img.getAttribute('data-desc') || "";
+        lightboxCounter.innerText = (currentIndex + 1) + " / " + images.length;
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowRight") changeImage(1);
+            if (e.key === "ArrowLeft") changeImage(-1);
+        }
+    });
+</script>
+
+</body>
+</html>

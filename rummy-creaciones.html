@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creaciones | Rummy</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="rummy-style.css">
+    <link rel="icon" type="image/jpg" href="rummy.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="creaciones-page">
+    <div class="glow-bg"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="rummy.jpg" alt="Rummy" class="nav-avatar">
+                <span class="brand-name">Rummy <span class="brand-dot">Portfolio</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="rummy.html">Inicio</a></li>
+                <li><a href="rummy.html#proyectos">Galería</a></li>
+                <li><a href="rummy.html#servers">He Trabajado Con</a></li>
+                <li><a href="rummy-creaciones.html" class="active">Creaciones</a></li>
+                <li><a href="rummy.html#contacto">contacto</a></li>
+
+                <li class="nav-separator"></li> 
+
+                <li class="nav-contact">
+                    <a href="rummy.html#contacto" class="contact-link">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="Discord" class="discord-icon-nav">
+                        <span>Contáctame</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+    <header class="section-header">
+        <h1 class="creaciones-title">Mis Creaciones</h1>
+        <p class="tagline">Cosas que Programe con mucha dedicacion</p>
+    </header>
+
+    <main class="creaciones-grid">
+    <div class="creacion-card" onclick="openLightbox(0)">
+        <div class="card-img-wrapper">
+            <img src="trabajo1.png" alt="Build Minecraft" data-desc="Descripción de tu primera creación aquí.">
+        </div>
+        <div class="card-content">
+            <h3>Sanctuary Hub</h3>
+            <span class="tech-stack">Minecraft</span>
+        </div>
+    </div>
+
+    <div class="creacion-card" onclick="openLightbox(1)">
+        <div class="card-img-wrapper">
+            <img src="rummy.jpg" alt="Diseño" data-desc="Este es mi perfil diseñado con estilo pixel art.">
+        </div>
+        <div class="card-content">
+            <h3>Rummy Profile</h3>
+            <span class="tech-stack">Digital Art</span>
+        </div>
+    </div>
+
+    <div class="creacion-card" onclick="openLightbox(2)">
+        <div class="card-img-wrapper">
+            <img src="trabajo2.jpeg" alt="UI" data-desc="Interfaz diseñada para sistemas de control.">
+        </div>
+        <div class="card-content">
+            <h3>Interface Design</h3>
+            <span class="tech-stack">Photoshop</span>
+        </div>
+    </div>
+</main>
+</div>
+    <footer>
+        <p>&copy; 2026 Rummy Portfolio</p>
+        <code class="package-name">net.elgatope.keycontrol</code>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <div id="lightbox-counter" class="lightbox-counter">1 / 3</div>
+    
+    <button class="nav-btn prev" onclick="changeImage(-1)">&#10094;</button>
+    <button class="nav-btn next" onclick="changeImage(1)">&#10095;</button>
+    
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="Gigante">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+</div>
+
+    <script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.creacion-card img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+
+    function openLightbox(index) {
+        currentIndex = index;
+        updateLightbox();
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Bloquea el scroll del fondo
+    }
+
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Devuelve el scroll
+    }
+
+    function changeImage(step) {
+        currentIndex += step;
+        if (currentIndex >= images.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = images.length - 1;
+        updateLightbox();
+    }
+
+    function updateLightbox() {
+        const img = images[currentIndex];
+        lightboxImg.src = img.src;
+        lightboxCaption.innerText = img.getAttribute('data-desc') || "";
+        lightboxCounter.innerText = (currentIndex + 1) + " / " + images.length;
+    }
+
+    // Teclas rápidas
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowRight") changeImage(1);
+            if (e.key === "ArrowLeft") changeImage(-1);
+        }
+    });
+</script>
+
+</body>
+</html>
