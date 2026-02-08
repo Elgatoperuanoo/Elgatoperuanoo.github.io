@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "servers": [
+    {
+      "id": "caos_1_21_11",
+      "name": "Caos Launcher 1.21.11",
+      "type": "Release",
+      "version": "1.21.11",
+      "mainServer": true,
+      "javaVersion": 21,
+      "modules": []
+    }
+  ]
+}
