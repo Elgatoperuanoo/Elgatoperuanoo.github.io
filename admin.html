@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caos Cloud | Admin Login</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Bloqueo de selección de texto para evitar copiado */
+        body { 
+            user-select: none; 
+            -webkit-user-select: none; 
+            background-color: #000;
+        }
+    </style>
+</head>
+<body class="admin-body">
+
+    <div class="login-card">
+        <h1 class="title">CAOS CLOUD</h1>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <label>NOMBRE DE USUARIO</label>
+                <input type="text" id="user" class="input-pill" placeholder="Usuario" required autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <label>CONTRASEÑA</label>
+                <input type="password" id="pass" class="input-pill" placeholder="••••••••" required>
+            </div>
+
+            <div class="input-group">
+                <label>PIN DE SEGURIDAD</label>
+                <div class="pin-container">
+                    <input type="text" class="pin-box" maxlength="1" placeholder="0">
+                    <input type="text" class="pin-box" maxlength="1" placeholder="0">
+                    <input type="text" class="pin-box" maxlength="1" placeholder="0">
+                    <input type="text" class="pin-box" maxlength="1" placeholder="0">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login">ACCEDER AL PANEL</button>
+        </form>
+    </div>
+
+    <script>
+        // --- 1. PROTECCIÓN ANTI-INTRUSOS ---
+        // Bloquea clic derecho
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // Bloquea teclas de inspección (F12, Ctrl+Shift+I, Ctrl+U)
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) return false;
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) return false;
+            if(e.ctrlKey && e.keyCode == 85) return false;
+        };
+
+        // Limpia la consola constantemente para ocultar errores o rastros
+        setInterval(() => {
+            console.clear();
+            console.log("%c¡ACCESO RESTRINGIDO!", "color: red; font-size: 30px; font-weight: bold;");
+            console.log("%cMonitorización activa: net.elgatope.keycontrol", "color: #2ecc71; font-size: 14px;");
+        }, 1000);
+
+        // --- 2. BASE DE DATOS DE CUENTAS DISFRAZADAS ---
+        // u = usuario, p = password, n = pin, a = apodo (nombre real)
+        const _accounts = [
+            {
+                u: "MzIxc29ycHltbXVy", // rummypro123
+                p: "MzIxNjIwMl9vaWR1dHNzb2FjbXltbXVS", // Rummycaosstudio_2026123
+                n: "NTIwNg==", // 6025
+                a: "ZVBvdGFH"   // GatoPe
+            },
+
+            {
+                u: "b2xpbQ==",
+                p: "aWF3a2F1ZGxhc2Fi",
+                n: "MTM5MA==",
+                a: "c2Fib2xpbQ=="
+            },
+            /* Cuando generes una cuenta nueva en tu PC, pega el bloque aquí abajo con una coma */
+        ];
+
+        // Función para desenmascarar datos (Base64 + Reverso)
+        function _0xrf(_s) { 
+            if(!_s) return "Operador"; 
+            return atob(_s).split("").reverse().join(""); 
+        }
+
+        // --- 3. LÓGICA DE SALTO DE LOS CUADROS DEL PIN ---
+        const pins = document.querySelectorAll('.pin-box');
+        pins.forEach((p, i) => {
+            p.addEventListener('input', () => {
+                p.value = p.value.replace(/[^0-9]/g, ''); // Solo números
+                if(p.value && i < pins.length - 1) pins[i+1].focus();
+            });
+            p.addEventListener('keydown', (e) => {
+                if(e.key === 'Backspace' && !p.value && i > 0) pins[i-1].focus();
+            });
+        });
+
+        // --- 4. VALIDACIÓN DE ACCESO ---
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const uI = document.getElementById('user').value.trim();
+            const pI = document.getElementById('pass').value.trim();
+            let nI = "";
+            pins.forEach(box => nI += box.value);
+
+            // Buscamos si existe una coincidencia en nuestra lista disfrazada
+            const auth = _accounts.find(acc => 
+                uI === _0xrf(acc.u) && 
+                pI === _0xrf(acc.p) && 
+                nI === _0xrf(acc.n)
+            );
+
+            if (auth) {
+                // ACCESO CONCEDIDO
+                localStorage.setItem('caos_session', 'active');
+                
+                // Guardamos el apodo real para que el Dashboard salude correctamente
+                localStorage.setItem('caos_user', _0xrf(auth.a)); 
+                
+                // Redirigir al panel principal
+                window.location.href = "dashboard.html";
+            } else {
+                // ACCESO DENEGADO
+                alert("ERROR: Credenciales inválidas.");
+                location.reload();
+            }
+        });
+    </script>
+</body>
+</html>

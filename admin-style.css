@@ -1,0 +1,225 @@
+/* =========================================
+   1. RESET Y CONFIGURACIÓN BASE
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+}
+
+/* =========================================
+   2. ESTILOS DEL LOGIN (ROJO / NEÓN)
+   ========================================= */
+.login-card {
+    background-color: #0a0a0a;
+    width: 440px; 
+    padding: 50px 35px;
+    border-radius: 40px; 
+    text-align: center;
+    border: 2px solid #ff0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+}
+
+.title {
+    color: #a2ff00;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* Inputs en forma de Píldora */
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input-group label {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 12px;
+    padding-left: 15px;
+}
+
+.input-pill {
+    width: 100%;
+    height: 55px; 
+    background: #000;
+    border: 2px solid #ff0000;
+    border-radius: 50px; 
+    padding: 0 25px;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.2);
+}
+
+/* Cuadros del PIN (Cuadrados) */
+.pin-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.pin-box {
+    width: 85px; 
+    height: 85px;
+    background: #000;
+    border: 2px solid #ff0000;
+    border-radius: 18px; 
+    text-align: center;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 900;
+    outline: none;
+    transition: 0.3s;
+}
+
+.pin-box:focus {
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    border-color: #ff3131;
+}
+
+/* Botón Login (Cápsula) */
+.btn-login {
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    border: 3px solid #ff0000;
+    color: #ffffff;
+    border-radius: 50px; 
+    font-weight: 900;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 25px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: #ff0000;
+    color: #000;
+    box-shadow: 0 0 25px #ff0000;
+}
+
+/* =========================================
+   3. ESTILOS DEL DASHBOARD (VERDE / MODS)
+   ========================================= */
+.dashboard-card {
+    background-color: #0d0d0d;
+    width: 500px;
+    padding: 50px 40px;
+    border-radius: 45px;
+    text-align: center;
+    border: 2px solid #2ecc71; 
+    box-shadow: 0 0 25px rgba(46, 204, 113, 0.4);
+}
+
+.title-green {
+    color: #2ecc71;
+    font-size: 35px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+}
+
+.welcome-text {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.input-pill-green {
+    width: 100%;
+    height: 50px;
+    background: #000;
+    border: 1px solid #333; 
+    border-radius: 12px;
+    padding: 0 20px;
+    color: #ffffff;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+}
+
+.input-pill-green:focus {
+    border-color: #2ecc71;
+}
+
+.btn-add-mod {
+    width: 100%;
+    background: transparent;
+    border: 1px dashed #2ecc71;
+    color: #2ecc71;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-bottom: 30px;
+    transition: 0.3s;
+}
+
+.btn-add-mod:hover {
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.btn-generate {
+    width: 100%;
+    height: 65px;
+    background: #2ecc71;
+    color: #000;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-generate:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.6);
+}
+
+/* Botón Cerrar Sesión */
+.btn-logout-simple {
+    background: transparent;
+    border: none;
+    color: #555;
+    margin-top: 25px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-logout-simple:hover {
+    color: #ff4444;
+    text-decoration: underline;
+}
+
+/* Utilidad para el Guardián de JS */
+.admin-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}

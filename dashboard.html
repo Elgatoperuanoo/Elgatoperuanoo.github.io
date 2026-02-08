@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Caos Cloud | Dashboard</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Bloqueo visual inicial para que no vean nada antes del script */
+        body { display: none; } 
+    </style>
+
+    <script>
+        // EL GUARDIÁN: Se ejecuta antes de que cargue cualquier imagen o texto
+        (function() {
+            const sesion = localStorage.getItem('caos_session');
+            if (sesion !== 'active') {
+                // Si no hay sesión, mandamos al login de inmediato
+                window.location.href = "admin.html";
+            } else {
+                // Si hay sesión, mostramos la página
+                document.documentElement.style.display = 'block';
+                // Usamos un pequeño truco para mostrar el body después de cargar el CSS
+                window.onload = () => { document.body.style.display = 'flex'; };
+            }
+        })();
+    </script>
+</head>
+<body class="admin-body">
+
+    <div class="dashboard-card">
+        <h1 class="title-green">CAOS CLOUD</h1>
+        
+        <form id="configForm">
+            <div class="input-group">
+                <label>NOMBRE DEL MODPACK</label>
+                <input type="text" id="modpackName" class="input-pill-green" placeholder="Mi Modpack Pro" required>
+            </div>
+
+            <div class="input-group">
+                <label>VERSIÓN DE MINECRAFT</label>
+                <select id="mcVersion" class="input-pill-green select-custom">
+                    <option value="1.20.1">1.20.1 (Recomendado)</option>
+                    <option value="1.19.2">1.19.2</option>
+                    <option value="1.18.2">1.18.2</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>LISTA DE MODS (LINKS .JAR)</label>
+                <div id="modsContainer">
+                    <input type="url" class="input-pill-green mod-url" placeholder="https://ejemplo.com/mod.jar" style="margin-bottom: 10px;">
+                </div>
+            </div>
+
+            <button type="button" class="btn-add-mod" onclick="addModField()">+ AÑADIR OTRO MOD</button>
+
+            <button type="submit" class="btn-generate">GENERAR ARCHIVO DE CONFIGURACIÓN</button>
+            
+            <button type="button" onclick="cerrarSesion()" class="btn-logout-simple">CERRAR SESIÓN SEGURA</button>
+        </form>
+    </div>
+
+    <script>
+        function addModField() {
+            const container = document.getElementById('modsContainer');
+            const nuevoInput = document.createElement('input');
+            nuevoInput.type = 'url';
+            nuevoInput.className = 'input-pill-green mod-url';
+            nuevoInput.placeholder = 'https://ejemplo.com/otro-mod.jar';
+            nuevoInput.style.marginTop = "10px";
+            container.appendChild(nuevoInput);
+        }
+
+        function cerrarSesion() {
+            // Destruimos la llave de acceso
+            localStorage.removeItem('caos_session');
+            window.location.href = "admin.html";
+        }
+
+        // Lógica para el botón de Generar
+        document.getElementById('configForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("¡Configuración generada para net.elgatope.keycontrol!");
+        });
+    </script>
+</body>
+</html>
